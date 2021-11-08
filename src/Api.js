@@ -25,7 +25,7 @@ const api = {
     getPersonagemById: async (id) => {
         const res = await basicFetch(`/character/${id}`);
         return res;
-    }
+    },
 }
 
 export default api;
