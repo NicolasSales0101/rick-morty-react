@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../../Api';
 import HeaderResponsive from '../../Components/HeaderResponsive';
-import './styles.css'
+import './styles.css';
 
 function Personagem(){
     const { id } = useParams();
@@ -14,19 +14,19 @@ function Personagem(){
             let response = await api.getPersonagemById(id);
             setData(response);
 
-            let data_criacao = new Date(data.created);
+            let data_criacao = new Date(response.created);
             data_criacao = data_criacao.toLocaleDateString('pt-BR');
             
             setDateCreated(data_criacao);
         } 
         load();
-    }, [id, data.created])
+    }, [id])
 
     return(
         <>
             <HeaderResponsive />
             <div className='personagem-container'>
-                {data && 
+                { data && 
                     (
                         <div className='full-info-data-container'>
                             <img src={data.image} alt={data.name}/>
